@@ -17,6 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from school.views import HomePageView, StudentList, TeacherList, CourseList, BlockList, ClassList
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', HomePageView.as_view(), name='home'),
+    path('student_list', StudentList.as_view(), name='student-list'),
+    path('teacher_list', TeacherList.as_view(), name='teacher-list'),
+    path('course_list', CourseList.as_view(), name='course-list'),
+    path('block_list', BlockList.as_view(), name='block-list'),
+    path('class_list', ClassList.as_view(), name='class-list'),
 ]

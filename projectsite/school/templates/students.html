@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% comment %} <a href="{% url 'pokemoncard-add' %}" class="btn btn-outline-primary">Add New Card</a><br> {% endcomment %}
+  <section class="student-container">
+    <!-- Display Pokemon Cards -->
+    {% for object in object_list %}
+      <div class="student-box">
+        <div class="student">
+            <p>{{ object.first_name }}</p>
+
+
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+  {% comment %} {% include 'includes/pagination.html' %} {% endcomment %}
+{% endblock %}
