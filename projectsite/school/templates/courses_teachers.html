@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+  <a href="{% url 'course-list' %}" class="btn"> Default View </a>
+  <a href="{% url 'course-add' %}" class="btn btn-outline-primary">Add New Course</a><br>
+  {% for course, teachers in teachers_by_course.items %}
+    <h2>{{ course.name }}</h2>
+    <ul>
+      {% for teacher in teachers %}
+        <li>{{ teacher.full_name }} - {{ teacher.email }}</li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+{% endblock %}

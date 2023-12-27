@@ -6,7 +6,7 @@ from .models import Block, Student, Teacher, Course, Class
 
 class StudentInline(admin.TabularInline):
     model = Student
-    fields = ("student_number", "last_name", "first_name", "middle_name", "email", "contact_number", "birthdate", "address", "image")
+    fields = ("student_number", "last_name", "first_name", "middle_name", "email", "contact_number", "birthdate", "address", "image", "created_at", "updated_at")
     readonly_fields = ("student_number",)  # Add fields you want to display or make read-only
 
 class PrerequisiteInline(admin.TabularInline):
@@ -29,13 +29,13 @@ class BlockAdmin(admin.ModelAdmin):
     
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ("student_number", "last_name", "first_name", "middle_name", "email", "contact_number", "birthdate", "address","block","image")
+    list_display = ("student_number", "last_name", "first_name", "middle_name", "email", "contact_number", "birthdate", "address","block","image", "created_at", "updated_at")
     search_fields = ("student_number",)
 
 
 @admin.register(Teacher)
 class TeacherAdmin(admin.ModelAdmin):
-    list_display = ("last_name", "first_name", "middle_name", "email", "contact_number", "birthdate", "address","display_courses")
+    list_display = ("last_name", "first_name", "middle_name", "email", "contact_number", "birthdate", "address","display_courses", "created_at", "updated_at")
     search_fields = ("last_name","first_name", "email")
 
 
@@ -48,12 +48,12 @@ class TeacherAdmin(admin.ModelAdmin):
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ("code", "name", "description")
+    list_display = ("code", "name", "description", "created_at", "updated_at")
     search_fields = ("code", "name")
     inlines = [PrerequisiteInline]
 
 
 @admin.register(Class)
 class ClassAdmin(admin.ModelAdmin):
-    list_display = ("block", "teacher", "course")
+    list_display = ("block", "teacher", "course", "created_at", "updated_at")
     search_fields = ("block","course")
