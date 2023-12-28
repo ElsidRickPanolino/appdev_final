@@ -1,0 +1,113 @@
+:root {
+    --main-color: #3498db;
+    --gradient1: linear-gradient( 135deg, #2AFADF 10%, #4C83FF 100%);
+    --gradient1: linear-gradient( 135deg, #2AFADF 10%, #4C83FF 100%);
+  }
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    /* outline: 1px dotted red;
+    outline-offset: -1px; */
+}
+body{
+    height: 100vh;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.header{
+    height: 100px;
+    width: 99vw;
+    display: flex;
+    justify-content: center;
+    background: var(--gradient1);
+}
+
+.nav_item{
+    color: aliceblue;
+    margin: 5px 20px;
+    text-decoration: none;
+}
+
+.content{
+    min-height: calc(100vh - 100px);
+    margin: auto;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.top_btn{
+    display: flex;
+    height: 100px;
+    width: 100%;
+    align-items: center;
+}
+.top_btn_item{
+    background: var(--gradient1);
+    border-radius: 5px;
+    color: aliceblue;
+    border: none;
+    height: 40px;
+    width: 200px;
+}
+
+.add_btn{
+    background: var(--gradient1);
+    border-radius: 5px;
+    color: aliceblue;
+    border: none;
+    height: 40px;
+    width: 120px;
+}
+.students{
+    width: 100%;
+    background-color: #0086e02b;
+    border-radius: 10px;
+    padding: 50px;
+    display: grid;
+    place-items: center;
+}
+
+.student-container{
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    place-items: center;
+}
+.student-box{
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+    margin: 15px;
+    border-radius: 10px;
+    height: fit-content;
+    width: fit-content;
+    height: 250px;
+    max-width: 450px;
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(2, 1fr);
+
+    box-shadow: 5px 5px 10px #444444ac;
+}
+.main{
+    grid-column: 1 2;
+}
+.info{
+    grid-column: 2 3;
+}
+
+.footer{
+    height: 100px;
+    width: 99vw;
+    background: var(--gradient1);
+}
+
+.student_image{
+    height: 150px;
+    width: 150px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 4px #444444ac;
+    border-top: 2px solid #44444488;
+    border-left: 2px solid #44444488;
+}

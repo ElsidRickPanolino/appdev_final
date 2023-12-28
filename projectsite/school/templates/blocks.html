@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<a href="{% url 'block-add' %}" class="btn btn-outline-primary">Add New Block</a><br>
-<a href="{% url 'student-by-block' %}" class="btn"> View Students </a>
-<section>
-    <!-- Display Pokemon Cards -->
-    {% for object in object_list %}
-      <div class="student-box">
-        <div class="student">
-            <p>{{ object.name }}</p>
-            <a href="block_list/{{ object.id }}" >Edit</a> |
-            <a href="block_list/{{ object.id }}/delete" >Delete</a>
+<div class="content">
+  <a href="{% url 'block-add' %}" class="btn btn-outline-primary">Add New Block</a><br>
+  <a href="{% url 'student-by-block' %}" class="btn"> View Students </a>
+  <section>
+      {% for object in object_list %}
+        <div class="student-box">
+          <div class="student">
+              <p>{{ object.name }}</p>
+              <a href="block_list/{{ object.id }}" >Edit</a> |
+              <a href="block_list/{{ object.id }}/delete" >Delete</a>
+          </div>
         </div>
-      </div>
-    {% endfor %}
-  </section>
-  {% include 'includes/pagination.html' %}
+      {% endfor %}
+    </section>
+    {% include 'includes/pagination.html' %}
+  </div>
 {% endblock %}

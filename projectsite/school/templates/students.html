@@ -2,33 +2,44 @@
 {% load static %}
 
 {% block content %}
-<a href="{% url 'student-by-block' %}" class="btn"> View by Block </a>
-<a href="{% url 'student-add' %}" class="btn btn-outline-primary">Add New Student</a><br>
-<section class="student-container">
-  {% for student in students %}
-    <div class="student-box">
-      <div class="student">
-        <p>{{ student.full_name }}</p>
-        <p>{{ student.email }}</p>
-        {% if student.image %}
-          <img class="student_image" src="{{ student.image.url }}" alt="{{ student.full_name }} Image">
-        {% else %}
-          <!-- Placeholder image if no image is uploaded -->
-          <img class="student_image" src="{% static 'placeholder.png' %}" alt="Placeholder Image">
-        {% endif %}
-        <a href="student_list/{{ student.id }}" >Edit</a> |
-        <a href="student_list/{{ student.id }}/delete" >Delete</a>
-      </div>
-      <br>
-    </div>
-  {% endfor %}
-</section>
-{% include 'includes/pagination.html' %}
-<style>
-  .student_image{
-    height: 50px;
-    width: 50px;
-  }
-</style>
+<div class="content">
+  <div class="top_btn">
+    <button class="top_btn_item"><a href="{% url 'student-by-block' %}" class="btn"> View by Block </a></button>
+  </div>
+  <div class="students">
+    <button class="add_btn"><a href="{% url 'student-add' %}" class="btn btn-outline-primary"><i class="bi bi-plus"></i></a></button>
+    <br><br>
+    <section class="student-container">
+      {% for student in students %}
+        <div class="student-box">
+            <div class="main">
+              <div class="image_box">
+                {% if student.image %}
+                  <img class="student_image" src="{{ student.image.url }}" alt="{{ student.full_name }} Image">
+                {% else %}
+                  <img class="student_image" src="{% static 'placeholder.png' %}" alt="Placeholder Image">
+                {% endif %}
+              </div>
+              <p class="student_fullname">{{ student.full_name }}</p>
+              <p>{{ student.block }}</p>
+            </div>
+            <div class="info">
+              <p>{{ student.student_number }}</p>
+              <p>{{ student.email }}</p>
+              <p>{{ student.address}} </p>
+              <p>{{ student.birthdate}} </p>
+              <div class="actions">
+                <a href="student_list/{{ student.id }}" >Edit</a> |
+                <a href="student_list/{{ student.id }}/delete" >Delete</a>
+              </div>
+            </div>
+        </div>
+      {% endfor %}
+    </section>
+</div>
+<br>
+  {% include 'includes/pagination.html' %}
+</div>
+
 {% endblock %}
 
