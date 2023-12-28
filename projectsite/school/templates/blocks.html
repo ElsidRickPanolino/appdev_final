@@ -2,19 +2,33 @@
 {% load static %}
 {% block content %}
 <div class="content">
+  <br>
+  <a href="{% url 'student-by-block' %}" class="btn btn-primary"> View Students </a><br>
   <a href="{% url 'block-add' %}" class="btn btn-outline-primary">Add New Block</a><br>
-  <a href="{% url 'student-by-block' %}" class="btn"> View Students </a>
+
   <section>
-      {% for object in object_list %}
-        <div class="student-box">
-          <div class="student">
-              <p>{{ object.name }}</p>
-              <a href="block_list/{{ object.id }}" >Edit</a> |
-              <a href="block_list/{{ object.id }}/delete" >Delete</a>
-          </div>
-        </div>
-      {% endfor %}
-    </section>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Year</th>
+          <th>Block Number</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+    {% for object in object_list %}
+      <tr>
+        <td>{{ object.name }}</td>
+        <td>{{ object.year }}</td>
+        <td>{{ object.block }}</td>
+        <td>
+          <a href="block_list/{{ object.id }}" >Edit</a> |
+          <a href="block_list/{{ object.id }}/delete" >Delete</a>
+        </td>
+      </tr>
+    {% endfor %}
+    </table>
+  </section>
     {% include 'includes/pagination.html' %}
   </div>
 {% endblock %}

@@ -1,16 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
-  <a href="{% url 'teacher-list' %}" class="btn"> Default View </a>
+<div class="content">
+  <br>
+  <a href="{% url 'teacher-list' %}" class="btn  btn-primary"> Default View </a><br>
   <a href="{% url 'teacher-add' %}" class="btn btn-outline-primary">Add New Teacher</a><br>
   {% for teacher in teachers %}
-    <h2>{{ teacher.full_name }}</h2>
-    <p>Email: {{ teacher.email }}</p>
-    <p>Contact Number: {{ teacher.contact_number }}</p>
-    <p>Courses Taught:</p>
-    <ul>
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th colspan="3" class="bg-dark text-light">{{ teacher.full_name }}</th>
+        </tr>
+      </thead>
+      <tr>
+        <th>Code</th>
+        <th>Course</th>
+        <th>Description</th>
+      </tr>
       {% for course in teacher.courses.all %}
-        <li>{{ course.name }} - {{ course.description }}</li>
+      <tr>
+        <td>{{ course.code }}</td>
+        <td>{{ course.name }}</td>
+        <td>{{ course.description }}</td>
+      </tr>
       {% endfor %}
     </ul>
+    </table>
+    <br>
+    <br>
   {% endfor %}
+  </div>
 {% endblock %}

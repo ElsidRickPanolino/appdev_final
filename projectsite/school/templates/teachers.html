@@ -2,18 +2,37 @@
 {% load static %}
 {% block content %}
   <div class="content">
-    <a href="{% url 'teacher-by-course' %}" class="btn"> View Courses </a>
+    <br>
+    <a href="{% url 'teacher-by-course' %}" class="btn  btn-primary"> View Courses </a><br>
     <a href="{% url 'teacher-add' %}" class="btn btn-outline-primary">Add New Teacher</a><br>
     <section>
-      {% for object in object_list %}
-        <div class="student-box">
-          <div class="student">
-              <p>{{ object.first_name }}</p>
+      <table class="table table-bordered">
+        <tr>
+          <thead class="thead-light">
+            <th>Name</th>
+            <th>Email</th>
+            <th>Courses</th>
+            <th>Action</th>
+          </thead>
+        </tr>
+        {% for object in object_list %}
+          <tbody class="table-striped">
+          <tr>
+            <td>{{ object.full_name }}</td>
+            <td>{{ object.email }}</td>
+            <td>
+              {% for course in object.courses.all %}
+                {{ course.code }}{% if not forloop.last %}, {% endif %}
+              {% endfor %}
+            </td>
+            <td>
               <a href="teacher_list/{{ object.id }}" >Edit</a> |
               <a href="teacher_list/{{ object.id }}/delete" >Delete</a>
-          </div>
-        </div>
-      {% endfor %}
+            </td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
     </section>
     {% include 'includes/pagination.html' %}
   </div>

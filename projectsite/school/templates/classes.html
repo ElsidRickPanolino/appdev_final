@@ -2,18 +2,30 @@
 {% load static %}
 {% block content %}
 <div class="content">
+  <br>  
   <a href="{% url 'class-add' %}" class="btn btn-outline-primary">Add New Class</a><br>
     <section>
-      <!-- Display Pokemon Cards -->
-      {% for object in object_list %}
-        <div class="student-box">
-          <div class="student">
-              <p>{{ object.name }}</p>
-              <a href="class_list/{{ object.id }}" >Edit</a> |
-              <a href="class_list/{{ object.id }}/delete" >Delete</a>
-          </div>
-        </div>
-      {% endfor %}
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Block</th>
+            <th>Course</th>
+            <th>Teacher</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        {% for object in object_list %}
+        <tr>
+          <td>{{ object.block }}</td>
+          <td>{{ object.course }}</td>
+          <td>{{ object.teacher }}</td>
+          <td>
+            <a href="class_list/{{ object.id }}" >Edit</a> |
+            <a href="class_list/{{ object.id }}/delete" >Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
     </section>
     {% include 'includes/pagination.html' %}
   </div>

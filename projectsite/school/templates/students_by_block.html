@@ -1,13 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Students by Block</h1>
+<div class="content">
+  <br>
+  <div>
+    <a href="{% url 'block-list' %}" class="btn btn-primary"> Blocks </a>
+    <a href="{% url 'student-list' %}" class="btn btn-primary"> Students </a><br>
+  </div><br>
   {% for block, students in students_by_block.items %}
-    <h2>{{ block.name }}</h2>
-    <ul>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th colspan="2" class="bg-dark text-light">{{ block.name }}<th>
+        </tr>
+        <tr>
+          <th>Student Number</th>
+          <th>Name</th>
+        </tr>
+      <thead>
       {% for student in students %}
-        <li>{{ student.full_name }}</li>
+        <tr>
+          <td>{{ student.student_number }}</td>
+          <td>{{ student.full_name }}</td>
+        </tr>
       {% endfor %}
-    </ul>
+    </table>
+    <br><br>
   {% endfor %}
+
+</div>
 {% endblock %}
