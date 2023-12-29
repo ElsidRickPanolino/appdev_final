@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <form role="form" class="" action="" method="post" novalidate>
+    <form role="form" class="" action="" method="post" enctype="multipart/form-data" novalidate>
         {% csrf_token %}
         {% include 'includes/form.html' %}
         <br />

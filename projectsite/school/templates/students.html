@@ -20,13 +20,13 @@
                 <img class="student_image" src="{% static 'placeholder.png' %}" alt="Placeholder Image">
               {% endif %}
             </div>
-            <p class="s_fullname text-center">{{ student.full_name }}</p>
+            <p class="s_num text-center">{{ student.student_number }}</p>
             <p class="s_block text-center">{{ student.block }}</p>
 
-            <p class="s_num">{{ student.student_number }}</p>
-            <p class="s_email">{{ student.email }}</p>
-            <p class="s_address">{{ student.address}} </p>
-            <p class="s_birthdate">{{ student.birthdate}} </p>
+            <p class="s_fullname"><span class="s_label">Student number</span><br>{{ student.full_name }}</p><br><br>
+            <p class="s_email"><span class="s_label">email</span><br>{{ student.email }}</p><br>
+            <p class="s_address"><span class="s_label">address</span><br>{{ student.address}} </p><br>
+            <p class="s_birthdate"><span class="s_label">Birthdate</span><br>{{ student.birthdate}} </p><br>
             <div class="s_action">
               <a href="student_list/{{ student.id }}" >Edit</a> |
               <a href="student_list/{{ student.id }}/delete" >Delete</a>

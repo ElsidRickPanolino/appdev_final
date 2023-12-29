@@ -6,10 +6,7 @@ from school.models import Student, Teacher, Course, Block, Class
 from school.forms import StudentForm, TeacherForm, CourseForm, BlockForm, ClassForm
 
 from django.urls import reverse_lazy
-
-
-from django.http import JsonResponse
-from django.db.models import Count
+from django.db.models import F
 
 # Create your views here.
 
@@ -30,6 +27,9 @@ class StudentList(ListView):
     context_object_name = 'students'
     template_name = 'students.html'
     paginate_by = 3
+    
+    def get_queryset(self):
+        return Student.objects.order_by('last_name', 'first_name')
 
 class StudentByBlockList(ListView):
     model = Block
@@ -45,7 +45,7 @@ class StudentByBlockList(ListView):
         students_by_block = {}
 
         for block in blocks:
-            students = Student.objects.filter(block=block)
+            students = Student.objects.filter(block=block).order_by(F('last_name'), F('first_name'))
             students_by_block[block] = students
 
         context['students_by_block'] = students_by_block
@@ -80,7 +80,7 @@ class CourseList(ListView):
     model = Course
     context_object_name = 'courses'
     template_name = 'courses.html'
-    paginate_by = 5
+    paginate_by = 6
     
     def get_queryset(self):
         return Course.objects.order_by('semester')
@@ -128,6 +128,10 @@ class StudentCreateView(CreateView):
     template_name = 'add.html'
     success_url = reverse_lazy('student-list')
     
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+    
 class TeacherCreateView(CreateView):
     model = Teacher
     form_class = TeacherForm
@@ -161,6 +165,10 @@ class StudentUpdateView(UpdateView):
     template_name = 'edit.html'
     success_url = reverse_lazy('student-list')
     
+        
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
     
 class TeacherUpdateView(UpdateView):
     model = Teacher
@@ -220,5 +228,5 @@ class ClassDeleteView(DeleteView):
     
     
     
-    
-# FOR CHARTS
+
+# CHARTS

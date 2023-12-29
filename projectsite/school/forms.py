@@ -8,6 +8,9 @@ class StudentForm(ModelForm):
         model = Student
         fields = "__all__"
         
+    widgets = {
+            'image': forms.FileInput(attrs={'accept': 'image/*'})  # Specify input type for image field
+        }
         
 class TeacherForm(ModelForm):
     # courses = forms.ModelMultipleChoiceField(
@@ -15,6 +18,7 @@ class TeacherForm(ModelForm):
     #     widget=forms.CheckboxSelectMultiple,
     #     required=False
     # )
+    birthdate = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
 
     class Meta:
         model = Teacher

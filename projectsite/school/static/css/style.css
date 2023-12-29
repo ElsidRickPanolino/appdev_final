@@ -96,33 +96,56 @@ body{
     justify-self: center;
     align-self: center;
 }
-.s_fullname{
-    grid-area: 1 / 1 / 2 / 2;
-    font-size: 1.1rem;
-    font-weight: 400;
+.s_num{
+    grid-area: 1 / 1 / 2 / 3;
+    font-size: 1.3rem;
+    font-weight: 500;
+    line-height: 99%;
+    height: fit-content;
+    background-color: #00d9ff;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: -2px -2px 5px #4444444b;
+
 }
 .s_block{
-    grid-area: 7 / 1 / 8 / 2;
+    grid-area: 7 / 1 / 8 / 3;
+    line-height: 80%;
+    height: fit-content;
+    border: solid 1px #00d9ff;
+    color: #00d9ff;
+    font-weight: 500;
+    padding: 5px;
+    border-radius: 5px;
 }
-.s_num{
+.s_fullname{
     grid-area: 2 / 2 / 3 / 3;
     font-size: 1.2rem;
     font-weight: 500;
+    color: #00d9ff ;
+    line-height: 80%;
 }
 .s_email{
     grid-area: 3 / 2 / 4 / 3;
+    line-height: 80%;
 }
 .s_address{
     grid-area: 4 / 2 / 5 / 3;
     font-size: 0.9rem;
+    line-height: 80%;
 }
 .s_birthdate{
     grid-area: 5 / 2 / 6 / 3;
+    line-height: 80%;
 }
 .s_action{
     grid-area: 6 / 2 / 7 / 3;
 }
-
+.s_label{
+    font-size: 10px;
+    color: #00000088;
+}
 
 .student_image{
     height: 145px;
