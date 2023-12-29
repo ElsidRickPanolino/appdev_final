@@ -6,17 +6,19 @@
     {% endfor %}
 </div>
 {% endif %}
-<div class="container">
+<div class="container content">
+    <br><br>
     {% for field in form %}
     <div class="col-md-6">
         <div class="form-group">
             {% if field.field.widget.input_type == 'checkbox' %}
-            <div class="form-check form-switch">
-                <label class="form-check-label text-body ms-3 text-truncate w-250 mb-0"
-                    for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-                {% render_field field class="form-check-input ms-auto" %}
+            <div class="form-check">
+                <label class="text-body ms-3 text-truncate w-250 mb-0"
+                    for="{{ field.id_for_label }}">{{ field.label_tag }}</label><br>
+                {% render_field field class="form-check-input" %}
             </div>
             {% else %}
+            <br>
             <label for="{{ field.id_for_label }}" class="form-control-label">{{ field.label_tag }}</label>
             {% render_field field class="form-control" %}
             {% endif %}

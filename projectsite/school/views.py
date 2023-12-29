@@ -7,6 +7,10 @@ from school.forms import StudentForm, TeacherForm, CourseForm, BlockForm, ClassF
 
 from django.urls import reverse_lazy
 
+
+from django.http import JsonResponse
+from django.db.models import Count
+
 # Create your views here.
 
 # READ
@@ -33,7 +37,7 @@ class StudentByBlockList(ListView):
     context_object_name = 'blocks'
 
     def get_queryset(self):
-        return Block.objects.all()
+        return Block.objects.order_by('year', 'block')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -78,12 +82,15 @@ class CourseList(ListView):
     template_name = 'courses.html'
     paginate_by = 5
     
+    def get_queryset(self):
+        return Course.objects.order_by('semester')
+    
 class CourseWithTeachersList(ListView):
     template_name = 'courses_teachers.html'
     context_object_name = 'courses'
 
     def get_queryset(self):
-        return Course.objects.all()
+        return Course.objects.order_by('semester')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -101,6 +108,9 @@ class BlockList(ListView):
     context_object_name = 'blocks'
     template_name = 'blocks.html'
     paginate_by = 5
+    
+    def get_queryset(self):
+        return Block.objects.order_by('year', 'block')
     
     
 class ClassList(ListView):
@@ -207,3 +217,8 @@ class ClassDeleteView(DeleteView):
     model = Class
     template_name = 'del.html'
     success_url = reverse_lazy('class-list')
+    
+    
+    
+    
+# FOR CHARTS

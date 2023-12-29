@@ -60,7 +60,7 @@ urlpatterns = [
     path('teacher_list/<pk>/delete', TeacherDeleteView.as_view(), name='teacher-delete'),
     path('course_list/<pk>/delete', CourseDeleteView.as_view(), name='course-delete'),
     path('block_list/<pk>/delete', BlockDeleteView.as_view(), name='block-delete'),
-    path('class_list/<pk>/delete', ClassDeleteView.as_view(), name='class-delete'),
+    path('class_list/<pk>/delete', ClassDeleteView.as_view(), name='class-delete'), 
 ]
 
 if settings.DEBUG:

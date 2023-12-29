@@ -58,14 +58,15 @@ class Teacher(BaseModel):
 class Course(BaseModel):
     code = models.CharField(max_length=10)
     name = models.CharField(max_length=100)
+    semester = models.IntegerField() 
     description = models.CharField(max_length=250)
     prerequisites = models.ManyToManyField('self', symmetrical=False, blank=True, verbose_name="Prerequisite Courses",)
     
     def __str__(self):
         return self.name
     
-    def clean(self):
-        self.prerequisites = self.prerequisites.exclude(pk=self.pk)
+    # def clean(self):
+    #     self.prerequisites = self.prerequisites.exclude(pk=self.pk)
 
 class Class(BaseModel):
     block = models.ForeignKey(Block, on_delete=models.CASCADE)

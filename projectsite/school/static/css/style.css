@@ -30,6 +30,7 @@ body{
 }
 
 .content{
+    height: fit-content;
     min-height: calc(100vh - 100px);
     margin: auto;
     width: 90vw;

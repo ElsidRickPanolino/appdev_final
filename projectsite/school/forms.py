@@ -10,11 +10,11 @@ class StudentForm(ModelForm):
         
         
 class TeacherForm(ModelForm):
-    courses = forms.ModelMultipleChoiceField(
-        queryset=Course.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
-        required=False
-    )
+    # courses = forms.ModelMultipleChoiceField(
+    #     queryset=Course.objects.all(),
+    #     widget=forms.CheckboxSelectMultiple,
+    #     required=False
+    # )
 
     class Meta:
         model = Teacher
@@ -26,11 +26,11 @@ class BlockForm(ModelForm):
         fields = "__all__"
         
 class CourseForm(forms.ModelForm):
-    prerequisites = forms.ModelMultipleChoiceField(
-        queryset=Course.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
-        required=False
-    )
+    # prerequisites = forms.ModelMultipleChoiceField(
+    #     queryset=Course.objects.all(),
+    #     widget=forms.CheckboxSelectMultiple,
+    #     required=False
+    # )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
